@@ -6,7 +6,7 @@ from deeplense.lens import DeepLens
 
 
 # Number of sims
-num_sim = int(1e2)
+num_sim = int(1e4)
 
 
 axion_masses = 10**np.random.uniform(-24,-22,num_sim)

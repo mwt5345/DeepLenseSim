@@ -7,8 +7,8 @@
 
 #SBATCH --mem=5G
 
-#SBATCH -t 00:10:00
-#SBATCH -o ../z-outfiles/cdm-o.out
-#SBATCH -e ../z-outfiles/cdm-e.out
+#SBATCH -t 02:00:00
+#SBATCH -o ../../z-outfiles/cdm-o.out
+#SBATCH -e ../../z-outfiles/cdm-e.out
 
-python3 -u ../make_cdm.py
+python3 -u ../sim_cdm.py
