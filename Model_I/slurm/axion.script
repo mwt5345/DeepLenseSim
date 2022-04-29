@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#SBATCH -J axion
+
+# Request 1 CPU core
+#SBATCH -n 1
+
+#SBATCH --mem=5G
+
+#SBATCH -t 00:10:00
+#SBATCH -o ../../z-outfiles/axion-o.out
+#SBATCH -e ../../z-outfiles/axion-e.out
+
+python3 -u ../sim_axion.py
