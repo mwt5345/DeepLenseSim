@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#SBATCH -J cdm
+
+# Request 1 CPU core
+#SBATCH -n 1
+
+#SBATCH --mem=5G
+
+#SBATCH -t 02:00:00
+#SBATCH -o ../../z-outfiles/cdm-o.out
+#SBATCH -e ../../z-outfiles/cdm-e.out
+
+python3 -u ../sim_cdm.py
