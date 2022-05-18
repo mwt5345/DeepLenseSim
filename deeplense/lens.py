@@ -200,6 +200,21 @@ class DeepLens(object):
         self.source_redshift_list = [self.z_gal]
         self.source_model_class = LightModel(self.source_model_list)
 
+    def make_source_light_mag(self):
+        """
+            Make light profile
+        """
+        center_x,center_y = np.random.uniform(-0.35,0.35,2)
+
+        # Sersic parameters in the initial simulation for the source
+        kwargs_sersic = {'magnitude': 20, 'R_sersic': 0.25, 'n_sersic': 1, 'e1': -0.1, 'e2': 0.1,
+                        'center_x': center_x, 'center_y': center_y}
+        self.source_model_list = ['SERSIC_ELLIPSE']
+        self.kwargs_source = [kwargs_sersic]
+        self.source_redshift_list = [self.z_gal]
+        self.source_model_class = LightModel(self.source_model_list)
+
+        
 
     def simple_sim(self):
         # import main simulation class of lenstronomy
@@ -261,22 +276,75 @@ class DeepLens(object):
         data_class.update_data(image_real)
         kwargs_data['image_data'] = image_real
 
+    def simple_sim_2(self):
+        """
+            Same structure as simple_sim but with Euclid resolution
+        """
+        from lenstronomy.SimulationAPI.sim_api import SimAPI
+
+        kwargs_model_physical = {'lens_model_list': self.lens_model_list,  # list of lens models to be used
+                              'lens_redshift_list': self.lens_redshift_list,  # list of redshift of the deflections
+                              'source_light_model_list': self.source_model_list,  # list of extended source models to be used
+                              'source_redshift_list': self.source_redshift_list,  # list of redshfits of the sources in same order as source_light_model_list
+                              'cosmo': self.astropy_instance,  # astropy.cosmology instance
+                              'z_source_convention': 2.5,
+                              'z_source': 1.0,} 
+
+        
+        #######################################################################
+        numpix = 64  # number of pixels per axis of the image to be modelled
     
+        # here we define the numerical options used in the ImSim module. 
+        # Have a look at the ImageNumerics class for detailed descriptions.
+        # If not further specified, the default settings are used.
+        kwargs_numerics = {'point_source_supersampling_factor': 1}
+
+        #######################################################################
+        sim = SimAPI(numpix=numpix, kwargs_single_band=self.kwargs_single_band, kwargs_model=kwargs_model_physical)
+        imSim = sim.image_model_class(kwargs_numerics)
+                   
+        _, kwargs_source, _ = sim.magnitude2amplitude(None,self.kwargs_source)
+
+
+        image = imSim.image(self.kwargs_lens_list,kwargs_source,None)
+
+        self.image_model = image
+        self.poisson = sim.noise_for_model(model=image)
+        self.image_real = self.image_model + self.image_model
+
+    def set_instrument(self,inst_name):
+        """
+	        set_instrument
+			
+        		Method which sets up the specifics for a given instrument.
+
+        """
+        if inst_name == None:
+            pass
+        # Note .lower() here is just to make string lower case
+        elif inst_name.lower() == 'euclid':
+            from lenstronomy.SimulationAPI.ObservationConfig.Euclid import Euclid
+            Euc = Euclid(band='VIS',psf_type='GAUSSIAN',coadd_years=6)
+            self.kwargs_single_band = Euc.kwargs_single_band()
+        else:
+            pass
 
 if __name__ == "__main__":
 
     lens = DeepLens(axion_mass=1e-24)
     lens.make_single_halo(1e12)
-    lens.make_vortex(1e11)
-    lens.make_source_light()
+    lens.make_vortex(1e10)
+    lens.set_instrument('Euclid')
+    lens.make_source_light_mag()
+    lens.simple_sim_2()
 
-    lens_model_class   = LensModel(lens.lens_model_list)
-    source_model_class = LightModel(lens.source_model_list)
-
-    lens.simple_sim()
+    print(lens.kwargs_single_band)
 
     
     import matplotlib.pyplot as plt
+
+    plt.imshow(lens.image_real);plt.show()
+    """
     plt.figure(figsize=(10,5))
     plt.subplot(2,2,1)
     plt.imshow(lens.image_real)
@@ -291,3 +359,4 @@ if __name__ == "__main__":
     plt.imshow(lens.bkg)
     plt.colorbar()
     plt.show()
+    """
