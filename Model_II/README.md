@@ -1,6 +1,6 @@
 # Model II
 
-This data set constitutes simulations that are to those in our original papers but with changes to the instument systematics to approximate an Euclid survey.
+This data set constitutes simulations that are close to those in our original papers but with changes to the instument systematics to approximate an Euclid survey.
 
 ## Source galaxy
 - Modeled with simple Sersic light profile 
