@@ -16,13 +16,13 @@ This data set constitutes simulations that are to those in our original papers b
 - CDM (point mass subhalos)
 
 
-## Model I Data set
+## Model II Data set
 
 30,000 images per class. Axion files have extra data corresponding to mass of axion used in simulation.
 
 Training data is found [here](https://drive.google.com/file/d/1HYPkdtVUj9xsoGzFDxT4rhl37KmqDCg4/view?usp=sharing)
 
-## Model I Test set
+## Model II Test set
 
 5,000 images per class. Axion files have extra data corresponding to mass of axion used in simulation.
 
