@@ -1,9 +1,9 @@
-# Model II
+# Model IV
 
-This data set constitutes simulations that are to those in our original papers but with changes to the instument systematics to approximate an Euclid survey.
+This data set constitutes simulations that are close to those in our original papers but with changes to the instument systematics to approximate an Euclid survey and the use of real images of galaxies for lensin .
 
 ## Source galaxy
-- Modeled with simple Sersic light profile 
+- A processed image of a *real* galaxy 
 - Single channel
 
 ## Instrument
@@ -16,13 +16,13 @@ This data set constitutes simulations that are to those in our original papers b
 - CDM (point mass subhalos)
 
 
-## Model II Data set
+## Model IV Data set
 
 30,000 images per class. Axion files have extra data corresponding to mass of axion used in simulation.
 
-Training data is found [here](https://drive.google.com/file/d/1HYPkdtVUj9xsoGzFDxT4rhl37KmqDCg4/view?usp=sharing)
+Training data is found [here]()
 
-## Model II Test set
+## Model IV Test set
 
 5,000 images per class. Axion files have extra data corresponding to mass of axion used in simulation.
 
