@@ -6,7 +6,7 @@ from deeplense.lens import DeepLens
 
 
 # Number of sims
-num_sim = int(1e4)
+num_sim = int(5e3)
 
 
 axion_masses = 10**np.random.uniform(-24,-22,num_sim)
@@ -18,7 +18,7 @@ for i in range(num_sim):
     lens.make_source_light()
     lens.simple_sim()
     File = np.array([lens.image_real,axion_masses[i]])
-    np.save('/users/mtoomey/scratch/deeplense/Model_I/axion/axion_sim_' + str(random.getrandbits(128)),File)
+    np.save('/users/mtoomey/scratch/deeplense/Model_I_test/axion/axion_sim_' + str(random.getrandbits(128)),File)
 
 
 

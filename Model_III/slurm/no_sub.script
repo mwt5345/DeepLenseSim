@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#SBATCH -J no_sub
+
+# Request 1 CPU core
+#SBATCH -n 1
+
+#SBATCH --mem=5G
+
+#SBATCH -t 02:00:00
+#SBATCH -o ../../z-outfiles/no_sub-o.out
+#SBATCH -e ../../z-outfiles/no_sub-e.out
+
+python3 -u ../sim_no_sub.py

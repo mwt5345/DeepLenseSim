@@ -6,7 +6,7 @@ from deeplense.lens import DeepLens
 
 
 # Number of sims
-num_sim = int(1e4)
+num_sim = int(5e3)
 
 for i in range(num_sim):
     lens = DeepLens()
@@ -15,7 +15,7 @@ for i in range(num_sim):
     lens.make_source_light()
     lens.simple_sim()
     File = lens.image_real
-    np.save('/users/mtoomey/scratch/deeplense/Model_I/no_sub/no_sub_sim_' + str(random.getrandbits(128)),File)
+    np.save('/users/mtoomey/scratch/deeplense/Model_I_test/no_sub/no_sub_sim_' + str(random.getrandbits(128)),File)
 
 
 
