@@ -1,6 +1,6 @@
 # Model IV
 
-This data set constitutes simulations that are close to those in our original papers but with changes to the instument systematics to approximate an Euclid survey and the use of real images of galaxies for lensin .
+This data set constitutes simulations that are close to those in our original papers but with changes to the instument systematics to approximate an Euclid survey and the use of real images of galaxies for lensing.
 
 ## Source galaxy
 - A processed image of a *real* galaxy 
