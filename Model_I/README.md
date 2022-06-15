@@ -17,8 +17,12 @@ This data set constitutes simulations that most closely match those in our origi
 
 ## Model I Data set
 
+30,000 images per class. Axion files have extra data corresponding to mass of axion used in simulation.
+
 https://drive.google.com/file/d/1QMVLpqag6S9JWqzmGM_pK4C0F1eBVIfV/view?usp=sharing
 
 ## Model I Test set
+
+5,000 images per class. Axion files have extra data corresponding to mass of axion used in simulation.
 
 https://drive.google.com/file/d/1rUAKLLS3p9jDaL9R9m84JVKvMcUuVsO1/view?usp=sharing
